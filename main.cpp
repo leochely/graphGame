@@ -50,8 +50,8 @@ int main() {
             graph.addEdge("Washington", "Dallas", 1300);
             graph.addEdge("Dallas", "Denver", 780);
             graph.addEdge("Denver", "Atlanta", 1400);
-            graph.addEdge("Denver", "Chicago", 1400);
-            graph.addEdge("Chicago", "Denver", 1400);
+            graph.addEdge("Denver", "Chicago", 1000);
+            graph.addEdge("Chicago", "Denver", 1000);
             graph.addEdge("Austin", "Houston", 160);
             graph.addEdge("Atlanta", "Houston", 800);
             graph.addEdge("Houston", "Atlanta", 800);
