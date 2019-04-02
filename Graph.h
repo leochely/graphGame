@@ -16,7 +16,7 @@ public:
     bool addEdge(std::string fromVertex, std::string toVertex, int weight);
     int getWeight(std::string fromVertex, std::string toVertex);
     bool getAdjacent(std::string fromVertex, std::vector<std::string> &vVertex);
-    int Djikstra(std::string startVertex, std::string endVertex, std::vector<std::string> &vVertex);
+    int Dijkstra(std::string startVertex, std::string endVertex, std::vector<std::string> &vVertex);
     void printAll();
 private:
     std::vector<std::string> vertices;
