@@ -94,7 +94,7 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
         return -1;
     }
 
-    for(int i = 0; i < vertices.size(); ++i){
+    for(int i = 0; i < vertices.size(); ++i){ //Initializes distances vector
         if(vertices[i] == fromVertex){
             distances.push_back(0);
             continue;

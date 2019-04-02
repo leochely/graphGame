@@ -2,6 +2,7 @@
 #include "Graph.h"
 #include <string>
 #include <vector>
+#include <climits>
 
 int main() {
     Graph graph;
