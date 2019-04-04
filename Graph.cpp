@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Graph.h"
 #include <climits>
+#include <algorithm>
 
 void Graph::makeEmpty() {
     vertices.clear();
@@ -140,7 +141,6 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
         }
     }
 
-    std::cout << indexFrom << std::endl << std::endl;
     for(int i = 0; i < parents.size(); ++i){
         std::cout << vertices[i] << " " << parents[i] << std::endl;
     }
@@ -150,7 +150,8 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
     for(int i = 0; i < vertices.size(); ++i){
         std::cout << vertices[i] << " " << distances[i] << std::endl;
     }
-    if(distances[indexTo] == INT_MAX) return -1;
+
+    if(distances[indexTo] == INT_MAX) return -1; // Returns -1 if there is no path
 
 
     std::string currentVertex = toVertex;
@@ -162,6 +163,6 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
     }while(currentVertex != fromVertex);
 
     vVertex.push_back(fromVertex);
-
+    std::reverse(vVertex.begin(), vVertex.end());
     return distances[indexTo];
 }
