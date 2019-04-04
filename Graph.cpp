@@ -20,7 +20,7 @@ bool Graph::addEdge(std::string fromVertex, std::string toVertex, int weight) {
     }
 
     if (indexFrom == -1 || indexTo ==-1) return false;
-    edges[indexTo][indexFrom] = weight;
+    edges[indexFrom][indexTo] = weight;
     return true;
 }
 
@@ -88,7 +88,7 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
     std::vector<int> parents(vertices.size(), 0);
     int indexFrom = -1;
     int indexTo = -1;
-
+    bool visited;
 
     for(int i = 0; i < vertices.size(); ++i){
         if(vertices[i]== fromVertex) indexFrom = i;
@@ -108,13 +108,19 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
     }
 
     while(spt.size() < vertices.size()){
-        std::cout << spt.size() << std::endl;
         int min = distances[0];
         int index = 0;
         for(int i=0; i < distances.size(); ++i){
             if (distances[i] < min){
-                min = distances[i];
-                index = i;
+                visited = false;
+                for(auto& vertex:spt){
+                    if (vertex == vertices[i]) visited = true;
+                }
+                if(!visited) {
+                    min = distances[i];
+                    index = i;
+                    continue;
+                }
             }
         }
 
@@ -123,17 +129,29 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
         std::vector<std::string> adjacents;
         getAdjacent(vertices[index], adjacents);
 
+
         for(auto &vertex: adjacents){
             for(int i = 0; i < vertices.size(); ++i) {
-                if (vertex == vertices[i] && distances[i] > distances[index] + getWeight(vertices[index], vertices[i])) {
-                    distances[i] = getWeight(vertices[index], vertices[i]);
+                if (vertex == vertices[i] && (distances[i] > distances[index] + getWeight(vertices[index], vertex)) ) {
+                    distances[i] = distances[index] + getWeight(vertices[index], vertices[i]);
                     parents[i] = index;
                 }
             }
         }
     }
 
+    std::cout << indexFrom << std::endl << std::endl;
+    for(int i = 0; i < parents.size(); ++i){
+        std::cout << vertices[i] << " " << parents[i] << std::endl;
+    }
+
+    std::cout << std::endl << std::endl;
+
+    for(int i = 0; i < vertices.size(); ++i){
+        std::cout << vertices[i] << " " << distances[i] << std::endl;
+    }
     if(distances[indexTo] == INT_MAX) return -1;
+
 
     std::string currentVertex = toVertex;
     int endIndex = indexTo;
@@ -142,10 +160,8 @@ int Graph::Dijkstra(std::string fromVertex, std::string toVertex, std::vector<st
         currentVertex = vertices[parents[endIndex]];
         endIndex = parents[endIndex];
     }while(currentVertex != fromVertex);
+
     vVertex.push_back(fromVertex);
 
-    for(auto& vertex: vVertex){
-        std::cout << vertex << std::endl;
-    }
     return distances[indexTo];
 }

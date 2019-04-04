@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/leo/graphGame/Graph.cpp" "/Users/leo/graphGame/cmake-build-debug/CMakeFiles/graph.dir/Graph.cpp.o"
-  "/Users/leo/graphGame/main.cpp" "/Users/leo/graphGame/cmake-build-debug/CMakeFiles/graph.dir/main.cpp.o"
+  "C:/Users/Leo/Projects/graph/Graph.cpp" "C:/Users/Leo/Projects/graph/cmake-build-debug/CMakeFiles/graph.dir/Graph.cpp.obj"
+  "C:/Users/Leo/Projects/graph/main.cpp" "C:/Users/Leo/Projects/graph/cmake-build-debug/CMakeFiles/graph.dir/main.cpp.obj"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
